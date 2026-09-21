@@ -1,0 +1,2375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The Brew Haven</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&family=Italianno&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --dark:#160805;
+    --dark2:#211009;
+    --coffee:#35170c;
+    --brown:#5b2b17;
+    --gold:#d59b55;
+    --cream:#f4e4cd;
+    --white:#fffaf3;
+}
+
+html,body{
+    width:100%;
+    min-height:100%;
+}
+
+body{
+    background:#160805;
+    color:var(--cream);
+    font-family:"DM Sans",sans-serif;
+    overflow-x:hidden;
+}
+
+button{
+    font-family:inherit;
+    cursor:pointer;
+}
+
+.page{
+    display:none;
+    min-height:100vh;
+    background:#160805;
+}
+
+.page.active{
+    display:block;
+}
+
+
+/* ==================================================
+   TOP BAR
+================================================== */
+
+.topbar{
+    height:42px;
+    background:#2b140b;
+    border-bottom:1px solid rgba(213,155,85,.22);
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 7%;
+
+    font-size:12px;
+    color:#d9c5ab;
+}
+
+.top-left{
+    display:flex;
+    gap:8px;
+    align-items:center;
+}
+
+.top-right{
+    display:flex;
+    gap:20px;
+    font-size:14px;
+}
+
+
+/* ==================================================
+   NAVIGATION
+================================================== */
+
+.navbar{
+    height:88px;
+
+    position:absolute;
+    top:42px;
+    left:0;
+    right:0;
+
+    z-index:100;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 7%;
+
+    background:rgba(12,6,3,.72);
+    border-bottom:1px solid rgba(255,255,255,.12);
+
+    backdrop-filter:blur(5px);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    cursor:pointer;
+}
+
+.logo-icon{
+    font-size:38px;
+}
+
+.logo-title{
+    font-family:"Cormorant Garamond",serif;
+    color:white;
+    font-size:29px;
+    line-height:1;
+}
+
+.logo-sub{
+    color:#c99451;
+    font-size:8px;
+    letter-spacing:3px;
+    margin-top:5px;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:34px;
+}
+
+.nav-links a{
+    color:#eee5da;
+    font-family:"Cormorant Garamond",serif;
+    font-size:17px;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.nav-links a:hover{
+    color:var(--gold);
+}
+
+.book-btn{
+    border:1px solid var(--gold);
+    background:#73341d;
+    color:white;
+
+    padding:15px 25px;
+
+    font-size:12px;
+    letter-spacing:.5px;
+
+    transition:.3s;
+}
+
+.book-btn:hover{
+    background:var(--gold);
+    color:#1a0904;
+}
+
+.mobile-btn{
+    display:none;
+    background:none;
+    border:none;
+    color:white;
+    font-size:27px;
+}
+
+
+/* ==================================================
+   HOME HERO
+================================================== */
+
+.hero{
+    height:100vh;
+    min-height:680px;
+
+    position:relative;
+
+    background-image:
+    url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=2200&q=90");
+
+    background-size:cover;
+    background-position:center center;
+
+    display:flex;
+    align-items:center;
+}
+
+.hero::before{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(
+        90deg,
+        rgba(8,4,2,.92) 0%,
+        rgba(18,8,4,.78) 35%,
+        rgba(20,8,4,.38) 70%,
+        rgba(15,6,3,.32) 100%
+    );
+}
+
+.hero::after{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(
+        0deg,
+        rgba(8,3,1,.55),
+        transparent 40%
+    );
+}
+
+.hero-content{
+    position:relative;
+    z-index:5;
+
+    margin-left:9%;
+    margin-top:70px;
+
+    max-width:680px;
+}
+
+.hero-small{
+    color:#e0aa67;
+    letter-spacing:4px;
+    font-size:13px;
+
+    display:flex;
+    align-items:center;
+    gap:15px;
+
+    margin-bottom:22px;
+}
+
+.hero-small::after{
+    content:"";
+    height:1px;
+    width:50px;
+    background:#d59b55;
+}
+
+.hero h1{
+    color:#fffaf2;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:clamp(70px,8vw,120px);
+
+    font-weight:500;
+
+    line-height:.76;
+
+    letter-spacing:-2px;
+}
+
+.hero h1 em{
+    display:block;
+
+    font-family:"Italianno",cursive;
+
+    color:#ead0ab;
+
+    font-size:1.18em;
+
+    font-weight:400;
+
+    line-height:1;
+}
+
+.hero-description{
+    max-width:510px;
+
+    margin-top:32px;
+
+    color:#ded0c0;
+
+    font-size:15px;
+
+    line-height:1.8;
+}
+
+.hero-actions{
+    display:flex;
+    align-items:center;
+    gap:25px;
+
+    margin-top:34px;
+}
+
+.primary-btn{
+    border:none;
+
+    background:#e0ad6c;
+    color:#241006;
+
+    padding:16px 28px;
+
+    font-size:13px;
+    font-weight:600;
+
+    transition:.3s;
+}
+
+.primary-btn:hover{
+    background:#f1c789;
+    transform:translateY(-2px);
+}
+
+.secondary-btn{
+    border:none;
+    background:transparent;
+
+    color:white;
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    font-size:13px;
+}
+
+.play-circle{
+    width:45px;
+    height:45px;
+
+    border:1px solid #d59b55;
+    border-radius:50%;
+
+    display:grid;
+    place-items:center;
+
+    color:#d59b55;
+
+    font-size:11px;
+}
+
+.est{
+    position:absolute;
+
+    right:8%;
+    top:45%;
+
+    z-index:5;
+
+    width:112px;
+    height:112px;
+
+    border:1px solid #d59b55;
+    border-radius:50%;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    color:#d59b55;
+
+    background:rgba(20,7,3,.2);
+}
+
+.est span{
+    font-size:10px;
+    letter-spacing:2px;
+}
+
+.est strong{
+    font-family:"Cormorant Garamond";
+    font-size:30px;
+    font-weight:500;
+}
+
+.est small{
+    font-size:14px;
+}
+
+
+/* ==================================================
+   HOME FEATURE STRIP
+================================================== */
+
+.features{
+    background:#211009;
+
+    border-top:1px solid rgba(213,155,85,.18);
+    border-bottom:1px solid rgba(213,155,85,.18);
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+}
+
+.feature{
+    min-height:105px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:18px;
+
+    border-right:1px solid rgba(213,155,85,.18);
+}
+
+.feature:last-child{
+    border:none;
+}
+
+.feature-icon{
+    font-size:27px;
+    color:#d59b55;
+}
+
+.feature h3{
+    font-family:"Cormorant Garamond";
+    font-size:20px;
+    color:white;
+}
+
+.feature p{
+    color:#927b67;
+    font-size:11px;
+    margin-top:4px;
+}
+
+
+/* ==================================================
+   HOME STORY
+================================================== */
+
+.home-story{
+    max-width:1200px;
+    margin:auto;
+
+    padding:100px 30px;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+
+    gap:75px;
+
+    align-items:center;
+}
+
+.story-photo{
+    height:480px;
+
+    background-image:
+    url("https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1200&q=90");
+
+    background-size:cover;
+    background-position:center;
+
+    border:1px solid rgba(213,155,85,.3);
+}
+
+.story-label{
+    color:#d59b55;
+
+    letter-spacing:3px;
+
+    font-size:11px;
+}
+
+.story-title{
+    font-family:"Cormorant Garamond";
+
+    color:white;
+
+    font-size:57px;
+
+    font-weight:500;
+
+    line-height:.9;
+
+    margin:18px 0 25px;
+}
+
+.story-title em{
+    font-family:"Italianno";
+
+    color:#d59b55;
+
+    font-weight:400;
+}
+
+.story-text{
+    color:#ae9981;
+
+    font-size:14px;
+
+    line-height:1.9;
+
+    max-width:490px;
+}
+
+.outline-btn{
+    margin-top:30px;
+
+    background:transparent;
+
+    border:1px solid #9d6835;
+
+    color:#d59b55;
+
+    padding:14px 24px;
+
+    transition:.3s;
+}
+
+.outline-btn:hover{
+    background:#d59b55;
+    color:#1b0b05;
+}
+
+
+/* ==================================================
+   FOOTER
+================================================== */
+
+.footer{
+    background:#100603;
+
+    border-top:1px solid rgba(213,155,85,.22);
+
+    padding:65px 7% 25px;
+}
+
+.footer-grid{
+    max-width:1250px;
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:1.5fr 1fr 1fr 1fr 1.4fr;
+
+    gap:45px;
+}
+
+.footer h3{
+    font-family:"Cormorant Garamond";
+
+    font-size:21px;
+
+    color:white;
+
+    margin-bottom:20px;
+}
+
+.footer p,
+.footer a{
+    color:#8f7763;
+
+    font-size:12px;
+
+    line-height:1.8;
+}
+
+.footer a{
+    display:block;
+
+    cursor:pointer;
+
+    margin-bottom:8px;
+}
+
+.footer a:hover{
+    color:#d59b55;
+}
+
+.footer-logo{
+    font-family:"Cormorant Garamond";
+
+    font-size:27px;
+
+    color:white;
+}
+
+.footer-brand p{
+    max-width:250px;
+    margin-top:15px;
+}
+
+.social{
+    display:flex;
+    gap:10px;
+
+    margin-top:20px;
+}
+
+.social span{
+    width:30px;
+    height:30px;
+
+    border:1px solid #754722;
+
+    border-radius:50%;
+
+    display:grid;
+    place-items:center;
+
+    color:#d59b55;
+}
+
+.newsletter{
+    display:flex;
+    border:1px solid #54301c;
+}
+
+.newsletter input{
+    flex:1;
+
+    min-width:0;
+
+    background:transparent;
+    border:none;
+
+    outline:none;
+
+    padding:12px;
+
+    color:white;
+}
+
+.newsletter button{
+    width:45px;
+
+    border:none;
+
+    background:#d59b55;
+}
+
+.copyright{
+    max-width:1250px;
+    margin:50px auto 0;
+
+    padding-top:20px;
+
+    border-top:1px solid rgba(213,155,85,.12);
+
+    display:flex;
+    justify-content:space-between;
+
+    color:#614d3d;
+
+    font-size:10px;
+}
+
+
+/* ==================================================
+   INNER PAGES
+================================================== */
+
+.inner-page{
+    padding-top:130px;
+    background:#1b0c06;
+}
+
+
+/* PAGE HEADER */
+
+.page-header{
+    height:350px;
+
+    position:relative;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    background-size:cover;
+    background-position:center;
+}
+
+.page-header::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:rgba(20,7,3,.72);
+}
+
+.page-header-content{
+    position:relative;
+    z-index:2;
+}
+
+.page-header small{
+    color:#d59b55;
+
+    letter-spacing:4px;
+
+    font-size:11px;
+}
+
+.page-header h1{
+    color:white;
+
+    font-family:"Cormorant Garamond";
+
+    font-size:78px;
+
+    font-weight:500;
+
+    margin:10px;
+}
+
+.page-header h1 em{
+    color:#d59b55;
+
+    font-family:"Italianno";
+
+    font-weight:400;
+}
+
+
+/* ==================================================
+   MENU PAGE
+================================================== */
+
+.menu-header{
+    background-image:
+    url("https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=2000&q=90");
+}
+
+.menu-container{
+    max-width:1200px;
+    margin:auto;
+
+    padding:70px 30px 100px;
+}
+
+.menu-tabs{
+    display:flex;
+    justify-content:center;
+
+    gap:10px;
+
+    margin-bottom:45px;
+}
+
+.menu-tabs button{
+    background:transparent;
+
+    border:1px solid #633b23;
+
+    color:#b89d80;
+
+    padding:11px 25px;
+
+    border-radius:30px;
+}
+
+.menu-tabs button.active,
+.menu-tabs button:hover{
+    background:#d59b55;
+
+    color:#1d0b05;
+
+    border-color:#d59b55;
+}
+
+.menu-grid{
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:25px;
+}
+
+.menu-card{
+    background:#29130a;
+
+    border:1px solid rgba(213,155,85,.17);
+
+    overflow:hidden;
+
+    transition:.3s;
+}
+
+.menu-card:hover{
+    transform:translateY(-5px);
+
+    border-color:#9b6838;
+}
+
+.menu-image{
+    height:220px;
+
+    background-size:cover;
+    background-position:center;
+}
+
+.i1{
+    background-image:url("https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=90");
+}
+
+.i2{
+    background-image:url("https://images.unsplash.com/photo-1497515114629-f71d768fd07c?auto=format&fit=crop&w=800&q=90");
+}
+
+.i3{
+    background-image:url("https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=800&q=90");
+}
+
+.i4{
+    background-image:url("https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?auto=format&fit=crop&w=800&q=90");
+}
+
+.i5{
+    background-image:url("https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?auto=format&fit=crop&w=800&q=90");
+}
+
+.i6{
+    background-image:url("https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=800&q=90");
+}
+
+.i7{
+    background-image:url("https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=800&q=90");
+}
+
+.i8{
+    background-image:url("https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=800&q=90");
+}
+
+.i9{
+    background-image:url("https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=90");
+}
+
+.menu-info{
+    padding:20px;
+}
+
+.menu-info h3{
+    color:white;
+
+    font-family:"Cormorant Garamond";
+
+    font-size:25px;
+}
+
+.menu-info p{
+    color:#917b67;
+
+    font-size:12px;
+
+    margin:5px 0 12px;
+}
+
+.price{
+    color:#d59b55;
+
+    font-size:15px;
+}
+
+
+/* ==================================================
+   RESERVATION
+================================================== */
+
+.reservation-header{
+    background-image:
+    url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=2000&q=90");
+}
+
+.reservation-container{
+    max-width:1100px;
+
+    margin:auto;
+
+    padding:70px 30px 100px;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:60px;
+}
+
+.reservation-photo{
+    min-height:650px;
+
+    background-image:
+    url("https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1000&q=90");
+
+    background-size:cover;
+    background-position:center;
+}
+
+.form-area{
+    padding:15px 0;
+}
+
+.form-area h2{
+    font-family:"Cormorant Garamond";
+
+    color:white;
+
+    font-size:55px;
+
+    font-weight:500;
+
+    line-height:.9;
+
+    margin:12px 0 20px;
+}
+
+.form-area h2 em{
+    font-family:"Italianno";
+
+    color:#d59b55;
+
+    font-weight:400;
+}
+
+.form-area > p{
+    color:#9e8770;
+
+    line-height:1.8;
+
+    margin-bottom:30px;
+}
+
+.form-row{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:15px;
+}
+
+.form-group{
+    margin-bottom:17px;
+}
+
+.form-group label{
+    display:block;
+
+    color:#c4a98b;
+
+    font-size:10px;
+
+    letter-spacing:1px;
+
+    margin-bottom:7px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+    width:100%;
+
+    background:#100603;
+
+    border:1px solid #5a331f;
+
+    color:white;
+
+    padding:14px;
+
+    outline:none;
+
+    font-family:inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+    border-color:#d59b55;
+}
+
+.form-group textarea{
+    height:100px;
+
+    resize:none;
+}
+
+.submit{
+    width:100%;
+
+    margin-top:8px;
+}
+
+
+/* ==================================================
+   CONTACT
+================================================== */
+
+.contact-header{
+    background-image:
+    url("https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=2000&q=90");
+}
+
+.contact-container{
+    max-width:1100px;
+
+    margin:auto;
+
+    padding:80px 30px;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:70px;
+
+    align-items:center;
+}
+
+.contact-container h2{
+    font-family:"Cormorant Garamond";
+
+    font-size:70px;
+
+    color:white;
+
+    font-weight:500;
+
+    line-height:.85;
+}
+
+.contact-container h2 em{
+    font-family:"Italianno";
+
+    color:#d59b55;
+
+    font-weight:400;
+}
+
+.contact-description{
+    color:#a28b75;
+
+    line-height:1.8;
+
+    margin:25px 0 35px;
+}
+
+.contact-item{
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    margin-bottom:25px;
+}
+
+.contact-icon{
+    width:45px;
+    height:45px;
+
+    border:1px solid #694127;
+
+    border-radius:50%;
+
+    display:grid;
+    place-items:center;
+
+    color:#d59b55;
+}
+
+.contact-item small{
+    display:block;
+
+    color:#d59b55;
+
+    letter-spacing:2px;
+
+    font-size:9px;
+}
+
+.contact-item strong{
+    color:#e6d5c0;
+
+    font-size:13px;
+}
+
+.contact-photo{
+    height:560px;
+
+    background-image:
+    url("https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1100&q=90");
+
+    background-size:cover;
+
+    background-position:center;
+}
+
+
+/* ==================================================
+   ABOUT
+================================================== */
+
+.about-header{
+    background-image:
+    url("https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=2000&q=90");
+}
+
+.about-container{
+    max-width:1100px;
+    margin:auto;
+
+    padding:90px 30px;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:80px;
+}
+
+.about-container h2{
+    color:white;
+
+    font-family:"Cormorant Garamond";
+
+    font-size:55px;
+
+    font-weight:500;
+
+    line-height:.9;
+}
+
+.about-container h2 em{
+    color:#d59b55;
+
+    font-family:"Italianno";
+}
+
+.about-container p{
+    color:#a28c76;
+
+    line-height:1.9;
+
+    margin-bottom:20px;
+}
+
+
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media(max-width:900px){
+
+    .topbar{
+        padding:0 4%;
+    }
+
+    .top-right{
+        display:none;
+    }
+
+    .navbar{
+        padding:0 5%;
+    }
+
+    .nav-links,
+    .book-btn{
+        display:none;
+    }
+
+    .mobile-btn{
+        display:block;
+    }
+
+    .hero-content{
+        margin-left:6%;
+        margin-right:6%;
+    }
+
+    .hero h1{
+        font-size:70px;
+    }
+
+    .est{
+        display:none;
+    }
+
+    .features{
+        grid-template-columns:1fr;
+    }
+
+    .feature{
+        min-height:85px;
+
+        border-right:none;
+
+        border-bottom:1px solid rgba(213,155,85,.15);
+    }
+
+    .home-story,
+    .reservation-container,
+    .contact-container,
+    .about-container{
+        grid-template-columns:1fr;
+    }
+
+    .story-photo{
+        height:400px;
+    }
+
+    .menu-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+
+@media(max-width:600px){
+
+    .topbar{
+        height:35px;
+        font-size:10px;
+    }
+
+    .navbar{
+        top:35px;
+        height:72px;
+    }
+
+    .hero{
+        min-height:650px;
+
+        background-position:62% center;
+    }
+
+    .hero-content{
+        margin-top:80px;
+    }
+
+    .hero h1{
+        font-size:61px;
+    }
+
+    .hero-description{
+        font-size:13px;
+    }
+
+    .hero-actions{
+        flex-wrap:wrap;
+    }
+
+    .home-story{
+        padding:65px 22px;
+    }
+
+    .story-title{
+        font-size:48px;
+    }
+
+    .page-header{
+        height:300px;
+    }
+
+    .page-header h1{
+        font-size:60px;
+    }
+
+    .menu-container{
+        padding:50px 20px;
+    }
+
+    .menu-tabs{
+        flex-wrap:wrap;
+    }
+
+    .menu-grid{
+        grid-template-columns:1fr;
+    }
+
+    .reservation-container,
+    .contact-container,
+    .about-container{
+        padding:55px 22px;
+    }
+
+    .reservation-photo{
+        min-height:400px;
+    }
+
+    .form-row{
+        grid-template-columns:1fr;
+    }
+
+    .contact-container h2{
+        font-size:58px;
+    }
+
+    .contact-photo{
+        height:400px;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .copyright{
+        flex-direction:column;
+        gap:10px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<div class="topbar">
+
+    <div class="top-left">
+        <span>◷</span>
+        <span>Mon – Fri: 9:00 – 19:00 / Closed on Weekends</span>
+    </div>
+
+    <div class="top-right">
+        <span>f</span>
+        <span>◎</span>
+        <span>𝕏</span>
+        <span>▶</span>
+    </div>
+
+</div>
+
+
+<header class="navbar">
+
+    <div class="logo" onclick="openPage('home')">
+
+        <div class="logo-icon">☕</div>
+
+        <div>
+            <div class="logo-title">The Brew Haven</div>
+            <div class="logo-sub">
+                COFFEE · FOOD · GOOD VIBES
+            </div>
+        </div>
+
+    </div>
+
+
+    <nav class="nav-links">
+
+        <a onclick="openPage('home')">Home</a>
+
+        <a onclick="openPage('about')">About</a>
+
+        <a onclick="openPage('menu')">Menu</a>
+
+        <a onclick="openPage('reservation')">
+            Reservation
+        </a>
+
+        <a onclick="openPage('contact')">
+            Contact
+        </a>
+
+    </nav>
+
+
+    <button
+        class="book-btn"
+        onclick="openPage('reservation')">
+
+        ♡ &nbsp; BOOK A TABLE
+
+    </button>
+
+
+    <button
+        class="mobile-btn"
+        onclick="mobileMenu()">
+
+        ☰
+
+    </button>
+
+</header>
+
+
+<!-- =====================================================
+     HOME
+===================================================== -->
+
+<section id="home" class="page active">
+
+    <div class="hero">
+
+        <div class="hero-content">
+
+            <div class="hero-small">
+                A COFFEE HOUSE FOR THE UNHURRIED
+            </div>
+
+            <h1>
+                Taste the
+                <em>Good Life</em>
+            </h1>
+
+            <p class="hero-description">
+
+                Handcrafted coffee, freshly baked treats
+                and delicious moments — made for your
+                everyday escape.
+
+            </p>
+
+
+            <div class="hero-actions">
+
+                <button
+                    class="primary-btn"
+                    onclick="openPage('menu')">
+
+                    Explore Menu &nbsp; →
+
+                </button>
+
+
+                <button
+                    class="secondary-btn"
+                    onclick="openPage('about')">
+
+                    <span class="play-circle">▶</span>
+
+                    Watch Our Story
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="est">
+
+            <span>EST.</span>
+
+            <strong>2010</strong>
+
+            <small>✦</small>
+
+        </div>
+
+    </div>
+
+
+    <div class="features">
+
+        <div class="feature">
+
+            <div class="feature-icon">☕</div>
+
+            <div>
+                <h3>Premium Beans</h3>
+                <p>Selected from the finest regions</p>
+            </div>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">✦</div>
+
+            <div>
+                <h3>Freshly Baked</h3>
+                <p>Prepared fresh every morning</p>
+            </div>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">♡</div>
+
+            <div>
+                <h3>Cozy Ambience</h3>
+                <p>Perfect for slow moments</p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="home-story">
+
+        <div class="story-photo"></div>
+
+        <div>
+
+            <div class="story-label">
+                OUR STORY
+            </div>
+
+            <h2 class="story-title">
+
+                A Small Café
+                <br>
+
+                <em>with a Big Dream</em>
+
+            </h2>
+
+            <p class="story-text">
+
+                The Brew Haven began with one simple idea —
+                to create a peaceful place where people could
+                enjoy great coffee, delicious food and
+                meaningful conversations.
+
+            </p>
+
+            <button
+                class="outline-btn"
+                onclick="openPage('about')">
+
+                Discover Our Story →
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section id="about" class="page inner-page">
+
+    <div class="page-header about-header">
+
+        <div class="page-header-content">
+
+            <small>OUR STORY</small>
+
+            <h1>
+                More Than
+                <em>Just Coffee</em>
+            </h1>
+
+        </div>
+
+    </div>
+
+
+    <div class="about-container">
+
+        <div>
+
+            <h2>
+                Where every cup
+                <br>
+                <em>has a story.</em>
+            </h2>
+
+        </div>
+
+        <div>
+
+            <p>
+                The Brew Haven started as a small neighbourhood
+                café with one simple dream — to create a place
+                where people could slow down.
+            </p>
+
+            <p>
+                Every coffee bean is carefully selected.
+                Every cup is freshly prepared.
+                Every guest is welcomed with warmth.
+            </p>
+
+            <button
+                class="primary-btn"
+                onclick="openPage('reservation')">
+
+                Come Visit Us →
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     MENU
+===================================================== -->
+
+<section id="menu" class="page inner-page">
+
+    <div class="page-header menu-header">
+
+        <div class="page-header-content">
+
+            <small>FRESHLY PREPARED</small>
+
+            <h1>
+                Our <em>Menu</em>
+            </h1>
+
+            <p>
+                Thoughtfully crafted. Perfectly served.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="menu-container">
+
+        <div class="menu-tabs">
+
+            <button
+                class="active"
+                onclick="filterMenu('coffee',this)">
+                Coffee
+            </button>
+
+            <button
+                onclick="filterMenu('tea',this)">
+                Tea
+            </button>
+
+            <button
+                onclick="filterMenu('food',this)">
+                Food
+            </button>
+
+            <button
+                onclick="filterMenu('dessert',this)">
+                Desserts
+            </button>
+
+        </div>
+
+
+        <div class="menu-grid">
+
+
+            <div class="menu-card coffee">
+
+                <div class="menu-image i1"></div>
+
+                <div class="menu-info">
+
+                    <h3>Espresso</h3>
+
+                    <p>
+                        Rich & bold classic espresso.
+                    </p>
+
+                    <div class="price">₹120</div>
+
+                </div>
+
+            </div>
+
+
+            <div class="menu-card coffee">
+
+                <div class="menu-image i2"></div>
+
+                <div class="menu-info">
+
+                    <h3>Americano</h3>
+
+                    <p>
+                        Smooth and beautifully balanced.
+                    </p>
+
+                    <div class="price">₹140</div>
+
+                </div>
+
+            </div>
+
+
+            <div class="menu-card coffee">
+
+                <div class="menu-image i3"></div>
+
+                <div class="menu-info">
+
+                    <h3>Cappuccino</h3>
+
+                    <p>
+                        Velvety milk with rich espresso.
+                    </p>
+
+                    <div class="price">₹160</div>
+
+                </div>
+
+            </div>
+
+
+            <div class="menu-card coffee">
+
+                <div class="menu-image i4"></div>
+
+                <div class="menu-info">
+
+                    <h3>Classic Latte</h3>
+
+                    <p>
+                        Silky, creamy and balanced.
+                    </p>
+
+                    <div class="price">₹170</div>
+
+                </div>
+
+            </div>
+
+
+            <div class="menu-card coffee">
+
+                <div class="menu-image i5"></div>
+
+                <div class="menu-info">
+
+                    <h3>Chocolate Mocha</h3>
+
+                    <p>
+                        Espresso with rich chocolate.
+                    </p>
+
+                    <div class="price">₹180</div>
+
+                </div>
+
+            </div>
+
+
+            <div class="menu-card coffee">
+
+                <div class="menu-image i6"></div>
+
+                <div class="menu-info">
+
+                    <h3>Cold Brew</h3>
+
+                    <p>
+                        Slow brewed and naturally smooth.
+                    </p>
+
+                    <div class="price">₹160</div>
+
+                </div>
+
+            </div>
+
+
+            <div class="menu-card tea">
+
+                <div class="menu-image i7"></div>
+
+                <div class="menu-info">
+
+                    <h3>Masala Chai</h3>
+
+                    <p>
+                        Indian spices with fresh milk.
+                    </p>
+
+                    <div class="price">₹100</div>
+
+                </div>
+
+            </div>
+
+
+            <div class="menu-card tea">
+
+                <div class="menu-image i8"></div>
+
+                <div class="menu-info">
+
+                    <h3>Green Tea</h3>
+
+                    <p>
+                        Light, fresh and aromatic.
+                    </p>
+
+                    <div class="price">₹110</div>
+
+                </div>
+
+            </div>
+
+
+            <div class="menu-card dessert">
+
+                <div class="menu-image i9"></div>
+
+                <div class="menu-info">
+
+                    <h3>Butter Croissant</h3>
+
+                    <p>
+                        Freshly baked every morning.
+                    </p>
+
+                    <div class="price">₹130</div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     RESERVATION
+===================================================== -->
+
+<section id="reservation" class="page inner-page">
+
+    <div class="page-header reservation-header">
+
+        <div class="page-header-content">
+
+            <small>RESERVATION</small>
+
+            <h1>
+                Reserve Your
+                <em>Table</em>
+            </h1>
+
+        </div>
+
+    </div>
+
+
+    <div class="reservation-container">
+
+        <div class="reservation-photo"></div>
+
+
+        <div class="form-area">
+
+            <small style="color:#d59b55;letter-spacing:3px;">
+                BOOK YOUR EXPERIENCE
+            </small>
+
+            <h2>
+                A Table
+                <br>
+                <em>for You</em>
+            </h2>
+
+            <p>
+                Good food tastes better when shared.
+                Reserve your table and enjoy a beautiful
+                coffee experience.
+            </p>
+
+
+            <form onsubmit="reserve(event)">
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label>YOUR NAME</label>
+
+                        <input
+                            type="text"
+                            placeholder="Enter your name"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>EMAIL</label>
+
+                        <input
+                            type="email"
+                            placeholder="Enter your email"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label>DATE</label>
+
+                        <input type="date" required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>TIME</label>
+
+                        <input type="time" required>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>NUMBER OF GUESTS</label>
+
+                    <select required>
+
+                        <option value="">
+                            Select guests
+                        </option>
+
+                        <option>1 Guest</option>
+                        <option>2 Guests</option>
+                        <option>3 Guests</option>
+                        <option>4 Guests</option>
+                        <option>5 Guests</option>
+                        <option>6+ Guests</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>SPECIAL REQUEST</label>
+
+                    <textarea
+                        placeholder="Any special request?"></textarea>
+
+                </div>
+
+
+                <button
+                    class="primary-btn submit"
+                    type="submit">
+
+                    Confirm Reservation →
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONTACT
+===================================================== -->
+
+<section id="contact" class="page inner-page">
+
+    <div class="page-header contact-header">
+
+        <div class="page-header-content">
+
+            <small>CONTACT US</small>
+
+            <h1>
+                Get in
+                <em>Touch</em>
+            </h1>
+
+        </div>
+
+    </div>
+
+
+    <div class="contact-container">
+
+        <div>
+
+            <h2>
+                We'd love
+                <br>
+                <em>to hear from you.</em>
+            </h2>
+
+            <p class="contact-description">
+
+                Have a question, want to say hello,
+                or simply looking for your next
+                coffee stop?
+
+            </p>
+
+
+            <div class="contact-item">
+
+                <div class="contact-icon">☎</div>
+
+                <div>
+
+                    <small>CALL US</small>
+
+                    <strong>
+                        +91 98765 43210
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="contact-item">
+
+                <div class="contact-icon">✉</div>
+
+                <div>
+
+                    <small>EMAIL</small>
+
+                    <strong>
+                        hello@thebrewhaven.in
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="contact-item">
+
+                <div class="contact-icon">⌖</div>
+
+                <div>
+
+                    <small>VISIT US</small>
+
+                    <strong>
+                        12 Coffee Lane, Patna, Bihar
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="primary-btn"
+                onclick="openPage('reservation')">
+
+                Book a Table →
+
+            </button>
+
+        </div>
+
+
+        <div class="contact-photo"></div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+    <div class="footer-grid">
+
+
+        <div>
+
+            <div class="footer-logo">
+                ☕ The Brew Haven
+            </div>
+
+            <p class="footer-brand">
+
+                More than just coffee.
+                A place for people,
+                stories and good vibes.
+
+            </p>
+
+            <div class="social">
+
+                <span>◎</span>
+                <span>f</span>
+                <span>𝕏</span>
+                <span>▶</span>
+
+            </div>
+
+        </div>
+
+
+        <div>
+
+            <h3>Quick Links</h3>
+
+            <a onclick="openPage('home')">Home</a>
+
+            <a onclick="openPage('about')">About</a>
+
+            <a onclick="openPage('menu')">Menu</a>
+
+            <a onclick="openPage('reservation')">
+                Reservation
+            </a>
+
+            <a onclick="openPage('contact')">
+                Contact
+            </a>
+
+        </div>
+
+
+        <div>
+
+            <h3>Our Menu</h3>
+
+            <a onclick="openPage('menu')">
+                Coffee
+            </a>
+
+            <a onclick="openPage('menu')">
+                Tea
+            </a>
+
+            <a onclick="openPage('menu')">
+                Food
+            </a>
+
+            <a onclick="openPage('menu')">
+                Desserts
+            </a>
+
+        </div>
+
+
+        <div>
+
+            <h3>Information</h3>
+
+            <a>FAQ</a>
+            <a>Privacy Policy</a>
+            <a>Terms & Conditions</a>
+            <a>Accessibility</a>
+            <a>Careers</a>
+
+        </div>
+
+
+        <div>
+
+            <h3>Join Our Newsletter</h3>
+
+            <p>
+                Get updates on new menu items,
+                events and more.
+            </p>
+
+            <div class="newsletter">
+
+                <input
+                    type="email"
+                    placeholder="Your email address">
+
+                <button>→</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+        <span>
+            © 2026 The Brew Haven. All rights reserved.
+        </span>
+
+        <span>
+            Made with ☕ & passion
+        </span>
+
+    </div>
+
+</footer>
+
+
+
+<script>
+
+/* =====================================================
+   PAGE SWITCHING
+===================================================== */
+
+function openPage(pageName){
+
+    document.querySelectorAll(".page").forEach(function(page){
+
+        page.classList.remove("active");
+
+    });
+
+
+    const page = document.getElementById(pageName);
+
+    if(page){
+
+        page.classList.add("active");
+
+    }
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"instant"
+    });
+
+}
+
+
+/* =====================================================
+   MENU FILTER
+===================================================== */
+
+function filterMenu(category,button){
+
+    document.querySelectorAll(".menu-tabs button")
+    .forEach(function(btn){
+
+        btn.classList.remove("active");
+
+    });
+
+    button.classList.add("active");
+
+
+    document.querySelectorAll(".menu-card")
+    .forEach(function(card){
+
+        if(card.classList.contains(category)){
+
+            card.style.display="block";
+
+        }else{
+
+            card.style.display="none";
+
+        }
+
+    });
+
+}
+
+
+/* =====================================================
+   RESERVATION
+===================================================== */
+
+function reserve(event){
+
+    event.preventDefault();
+
+    alert(
+        "☕ Thank you!\n\n" +
+        "Your reservation request has been received.\n\n" +
+        "The Brew Haven team will contact you shortly."
+    );
+
+    event.target.reset();
+
+}
+
+
+/* =====================================================
+   MOBILE MENU
+===================================================== */
+
+function mobileMenu(){
+
+    const nav=document.querySelector(".nav-links");
+
+    if(nav.style.display==="flex"){
+
+        nav.style.display="none";
+
+    }else{
+
+        nav.style.display="flex";
+
+        nav.style.position="absolute";
+        nav.style.top="72px";
+        nav.style.left="0";
+        nav.style.right="0";
+
+        nav.style.background="#1b0c06";
+
+        nav.style.padding="25px";
+
+        nav.style.flexDirection="column";
+
+        nav.style.gap="20px";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
